@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import randomcolor from "randomcolor";
 
 function HooksTest() {
   let [count, setCount] = useState(0);
-  let [num, setNum] = useState(1);
+  let [color, setColor] = useState("");
 
   function increment() {
     setCount((prevCount) => prevCount + 1);
@@ -12,21 +13,15 @@ function HooksTest() {
     setCount((prevCount) => prevCount - 1);
   }
 
-  function double() {
-    setNum((prevNum) => prevNum * 2);
-  }
-
-  function halves() {
-    setNum((prevNum) => prevNum / 2);
-  }
+  useEffect(() => {
+    setColor(randomcolor());
+  }, [count]);
 
   return (
     <>
-      <h2>{num}</h2>
+      <h2 style={{ color: color }}>{count}</h2>
       <button onClick={increment}>Increment</button>
       <button onClick={decrement}>Decrement</button>
-      <button onClick={double}>Double</button>
-      <button onClick={halves}>Halves</button>
     </>
   );
 }
