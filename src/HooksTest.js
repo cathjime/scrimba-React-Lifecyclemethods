@@ -1,11 +1,21 @@
 import React, {useState} from "react";
 
 function HooksTest() {
-    let [ value ] = useState("Hubba Hubba")
+    let [ count, setCount ] = useState(0)
+
+    function increment(){
+        setCount(prevCount => prevCount + 1)
+    }
     
+    function decrement(){
+        setCount(prevCount => prevCount - 1)
+    }
+
   return (
     <>
-      <h2>This is a test on hooks - {value}</h2>
+      <h2>{count}</h2>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
     </>
   );
 }
